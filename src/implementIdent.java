@@ -44,5 +44,4 @@ public class implementIdent {
         public static boolean nextCharIsDigit(Scanner in){
             return in.hasNext("[0-9]");
         }
-
 }

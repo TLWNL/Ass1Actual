@@ -3,4 +3,5 @@ public class Assignment1 {
     {
         System.out.println("Hello, world!");
     }
+
 }
