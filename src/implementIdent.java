@@ -1,22 +1,15 @@
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class implementIdent {
+public class implementIdent implements IdentInterface {
 
-        // Initializes a StringBuffer
-        public static void initIdent(){
-
-        }
-
-        public static void firstCharCheck(Scanner in){
-            if(nextChar(in) != '{'){
-                //Throw an error
-            }
+        public void InitIdent(){
 
         }
-        // Reads char for char using Scanner, until space has been read.
-        // Parses read data into a StringBuffer
-        public static void parseIdent(Scanner in, StringBuffer dest)
+
+
+
+        public void parseIdent(Scanner in, StringBuffer dest)
         {
             // Check if the first character that is to be read is a number
             if(dest.length() == 0 && nextCharIsDigit(in)){
@@ -28,20 +21,17 @@ public class implementIdent {
             }
         }
 
-        // Method to read 1 character
-        public static char nextChar(Scanner in){
+        public char nextChar(Scanner in){
             return in.next().charAt(0);
         }
 
-        // Method to check if the next character to be read when
-        // calling nextChar() is equal to the provided character.
-        public static boolean nextCharIs(Scanner in, char c){
+
+        public boolean nextCharIs(Scanner in, char c){
             return in.hasNext(Pattern.quote(c+""));
         }
 
-        // Method to check if the next character to be read when
-        // calling nextChar() is a digit
-        public static boolean nextCharIsDigit(Scanner in){
+
+        public boolean nextCharIsDigit(Scanner in){
             return in.hasNext("[0-9]");
         }
 }
