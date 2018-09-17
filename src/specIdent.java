@@ -9,7 +9,7 @@ interface IdentInterface{
      * constructors
      *
      * InitIdent();
-     * PRE - 
+     * PRE -
      * POST - A new Identifier has been created
      */
 
@@ -44,4 +44,7 @@ interface IdentInterface{
      * POST - TRUE: The next character is a digit
      *        FALSE: The next character is not a digit
      */
+
+    StringBuffer[] stringParser(Scanner in);
+
 }

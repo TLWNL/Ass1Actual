@@ -1,4 +1,6 @@
-interface SetInterface{
+import java.util.Scanner;
+
+interface SetInterface {
     /*
      * Elements: identifiers of the type StringBuffer
      * Structure: linear
@@ -50,6 +52,7 @@ interface SetInterface{
      * PRE -
      * POST - The symmetric difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
+
 
 }
 

@@ -1,4 +1,6 @@
-public class implementSet implements SetInterface{
+
+
+public class implementSet implements SetInterface {
 
     public void InitSet(){
 
