@@ -16,7 +16,7 @@ public class Assignment1 {
         System.out.println(AB[1]);
         System.out.println(AB[2]);*/
 
-        StringBuffer[] A1 = {new StringBuffer("eel"),
+        StringBuffer[] A1 = {new StringBuffer("eeel"),
                              new StringBuffer("nut"),
                              new StringBuffer("mouse"),
                              new StringBuffer("mouse2")};
