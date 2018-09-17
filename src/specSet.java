@@ -29,25 +29,25 @@ interface SetInterface {
      * POST - The element specified in arrayDest has been given the value of in
      */
 
-    void difference(StringBuffer arrayInput1, StringBuffer arrayInput2);
+    void difference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2);
     /*
      * PRE -
      * POST - The difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void intersection(StringBuffer arrayInput1, StringBuffer arrayInput2);
+    void intersection(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2);
     /*
      * PRE -
      * POST - The intersection between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void union(StringBuffer arrayInput1, StringBuffer arrayInput2);
+    void union(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2);
     /*
      * PRE -
      * POST - The union between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void symmetricDifference(StringBuffer arrayInput1, StringBuffer arrayInput2);
+    void symmetricDifference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2);
     /*
      * PRE -
      * POST - The symmetric difference between Set 1 and Set 2 has been calculated, formatted and printed
