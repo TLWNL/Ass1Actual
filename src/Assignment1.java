@@ -27,6 +27,7 @@ public class Assignment1 {
                              new StringBuffer("nut")};
         CalcInterface.intersection(A1, A2);
         CalcInterface.difference(A1,A2);
+        CalcInterface.union(A1,A2);
 
 
 

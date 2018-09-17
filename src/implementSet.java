@@ -43,7 +43,7 @@ public class implementSet implements SetInterface {
         if(differenceString.length() != 1)
             differenceString.delete(differenceString.length()-2, differenceString.length());
         differenceString.append("}");
-        
+
         System.out.printf("difference = %s\n", differenceString);
     }
 
@@ -67,6 +67,31 @@ public class implementSet implements SetInterface {
     }
 
     public void union(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2){
+        StringBuffer unionString = new StringBuffer("{");
+        boolean intersectFound;
+        for(int i = 0; i<arrayInput1.length;i++){
+            intersectFound = false;
+            for(int j = 0 ; j<arrayInput2.length; j++){
+                if((arrayInput1[i].toString()).equals((arrayInput2[j].toString()))){
+                    intersectFound = true;
+                }
+            }
+            if(!intersectFound) {
+                unionString.append(arrayInput1[i]);
+                unionString.append(", ");
+            }
+        }
+
+        for(int k=0;k<arrayInput2.length;k++){
+                unionString.append(arrayInput2[k]);
+                unionString.append(", ");
+        }
+
+        if(unionString.length() != 1)
+            unionString.delete(unionString.length()-2, unionString.length());
+        unionString.append("}");
+
+        System.out.printf("union = %s\n", unionString);
 
     }
 
