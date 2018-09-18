@@ -35,7 +35,7 @@ interface SetInterface {
      * POST - The difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void intersection(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2);
+    StringBuffer[] intersection(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2);
     /*
      * PRE -
      * POST - The intersection between Set 1 and Set 2 has been calculated, formatted and printed

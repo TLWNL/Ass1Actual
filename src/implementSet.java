@@ -47,14 +47,18 @@ public class implementSet implements SetInterface {
         System.out.printf("difference = %s\n", differenceString);
     }
 
-    public void intersection(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2){
+    public StringBuffer[] intersection(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2){
         StringBuffer intersectionString = new StringBuffer("{");
+        StringBuffer[] intersectArray = new StringBuffer[10];
+        int arrayCounter=0;
 
         for(int i = 0; i<arrayInput1.length; i++){
             for(int j = 0; j<arrayInput2.length; j++){
                 if((arrayInput1[i].toString()).equals((arrayInput2[j].toString()))){
                     intersectionString.append(arrayInput1[i]);
                     intersectionString.append(", ");
+                    intersectArray[arrayCounter] = arrayInput1[i];
+                    arrayCounter++;
                 }
             }
         }
@@ -64,6 +68,7 @@ public class implementSet implements SetInterface {
         intersectionString.append("}");
 
         System.out.printf("intersection = %s\n", intersectionString);
+        return intersectArray;
     }
 
     public void union(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2){
@@ -96,6 +101,44 @@ public class implementSet implements SetInterface {
     }
 
     public void symmetricDifference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2){
+        StringBuffer symmetricDifferenceString = new StringBuffer("{");
+        int intersectArrayLength = 0;
+        StringBuffer[] intersectArray = intersection(arrayInput1,arrayInput2);
+        for(int i = 0; i<intersectArray.length;i++){
+            if(intersectArray[i] != null)
+                intersectArrayLength++;
+        }
+
+        for(int j = 0; j<arrayInput1.length;j++){
+            boolean intersectFound = false;
+            for(int k = 0; k<intersectArrayLength;k++){
+                if(arrayInput1[j].toString().equals(intersectArray[k].toString())){
+                    intersectFound = true;
+                }
+            }
+            if(!intersectFound){
+                symmetricDifferenceString.append(arrayInput1[j]);
+                symmetricDifferenceString.append(", ");
+            }
+        }
+        for(int l = 0; l<arrayInput2.length;l++){
+            boolean intersectFound = false;
+            for(int m = 0; m<intersectArrayLength;m++){
+                if(arrayInput2[l].toString().equals(intersectArray[m].toString())){
+                    intersectFound = true;
+                }
+            }
+            if(!intersectFound){
+                symmetricDifferenceString.append(arrayInput2[l]);
+                symmetricDifferenceString.append(", ");
+            }
+        }
+
+        if(symmetricDifferenceString.length() != 1)
+            symmetricDifferenceString.delete(symmetricDifferenceString.length() - 2 ,symmetricDifferenceString.length());
+        symmetricDifferenceString.append("}");
+
+        System.out.printf("sym. difference = %s" , symmetricDifferenceString);
 
     }
 

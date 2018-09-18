@@ -16,7 +16,7 @@ public class Assignment1 {
         System.out.println(AB[1]);
         System.out.println(AB[2]);*/
 
-        StringBuffer[] A1 = {new StringBuffer("eel"),
+        StringBuffer[] A1 = {new StringBuffer("ape"),
                              new StringBuffer("nut"),
                              new StringBuffer("mouse"),
                              new StringBuffer("mouse2")};
@@ -28,6 +28,7 @@ public class Assignment1 {
         CalcInterface.intersection(A1, A2);
         CalcInterface.difference(A1,A2);
         CalcInterface.union(A1,A2);
+        CalcInterface.symmetricDifference(A1,A2);
 
 
 
