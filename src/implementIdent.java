@@ -4,11 +4,23 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class implementIdent implements IdentInterface {
+	
+	
 
     public void InitIdent(){
 
     }
 
+    public int counterCounter (StringBuffer[] in) {
+    	int counter = 0;
+    	for(int i = 0; i<in.length;i++) {
+    		if(in[i]!=null) {
+    			counter++;
+    		}
+    	}
+    	return counter;
+    }
+    
     public StringBuffer[] stringParser(Scanner in) {
 
         StringBuffer arrayInput = new StringBuffer();
@@ -23,6 +35,7 @@ public class implementIdent implements IdentInterface {
                 if(nextCharIs(in, ' ')){
                     System.out.println("1");
                     nextChar(in);
+                    System.out.println(arrayInput);
                     A[numOfElements]= new StringBuffer (arrayInput);
                     arrayInput.delete(0, (arrayInput.length()));
                     checker = 1;
@@ -30,6 +43,7 @@ public class implementIdent implements IdentInterface {
                 }
                 else if (nextCharIsLetter(in)) {
                     System.out.println("2");
+                    checker = 0;
                     arrayInput.append(nextChar(in));
                 }
                 else if (nextCharIsDigit(in) && checker != 1) {

@@ -46,5 +46,7 @@ interface IdentInterface{
      */
 
     StringBuffer[] stringParser(Scanner in);
+    
+    int counterCounter (StringBuffer[] in);
 
 }
