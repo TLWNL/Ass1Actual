@@ -13,12 +13,6 @@ interface IdentInterface{
      * POST - A new Identifier has been created
      */
 
-    void InitIdent();
-    /*
-     * PRE -
-     * POST - The identifier is empty
-     */
-
     void parseIdent(Scanner in, StringBuffer dest);
     /*
      * PRE -
@@ -45,8 +39,7 @@ interface IdentInterface{
      *        FALSE: The next character is not a digit
      */
 
-    StringBuffer[] stringParser(Scanner in);
+    StringBuffer stringParser(Scanner in);
     
-    int counterCounter (StringBuffer[] in);
 
 }
