@@ -4,8 +4,7 @@ import java.util.Scanner;
 public class Assignment1 {
 
     public static void main(String[] args) {
-        
-        StringBuffer intersection = new StringBuffer();
+
         StringBuffer[] A1 = new StringBuffer[10];
         StringBuffer[] A2 = new StringBuffer[10];
 
@@ -14,6 +13,8 @@ public class Assignment1 {
         
         Scanner sc1 = new Scanner(System.in);
         sc1.useDelimiter("");
+
+
         A1 = ParserInterface.stringParser(sc1);
         int A1Counter = ParserInterface.counterCounter(A1);
         

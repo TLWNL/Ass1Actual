@@ -8,12 +8,21 @@ interface IdentInterface{
      *
      * constructors
      *
-     * InitIdent();
+     * CreateIdent(StringBuffer toIdent);
      * PRE -
-     * POST - A new Identifier has been created
+     * POST - A new Identifier-object has been created
+     *
+     * CopyIdent(Identifier toCopy);
+     * PRE -
+     * POST - A copy of the Identifier-object has been created
      */
 
-    void InitIdent();
+    Identifier CreateIdent(StringBuffer toIdent);
+
+    Identifier CopyIdent(Identifier toCopy);
+
+
+    void initIdent();
     /*
      * PRE -
      * POST - The identifier is empty

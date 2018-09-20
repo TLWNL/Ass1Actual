@@ -4,11 +4,9 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class implementIdent implements IdentInterface {
-	
-	
 
-    public void InitIdent(){
-
+    public void initIdent(){
+        StringBuffer identBuffer = new StringBuffer();
     }
 
     public int counterCounter (StringBuffer[] in) {
