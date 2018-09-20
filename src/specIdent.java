@@ -8,7 +8,7 @@ interface IdentInterface{
      *
      * constructors
      *
-     * InitIdent();
+     * Identifier();
      * PRE -
      * POST - A new Identifier has been created
      */
