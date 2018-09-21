@@ -4,42 +4,41 @@ interface IdentInterface{
     /*
      * Elements: characters of type Char
      * Structure: linear
-     * Domain: ??
+     * Domain: Identifiers that begin with a letter and have a length of at least 1 character
      *
      * constructors
      *
-     * Identifier();
+     * Identifier(StringBuffer sb);
      * PRE -
      * POST - A new Identifier has been created
+     *
+     * CopyIdentifier(Identifier src);
+     * PRE -
+     * POST - A copy of the src Identifier has been created
      */
 
-    void parseIdent(Scanner in, StringBuffer dest);
+    void initIdent(char c);
     /*
      * PRE -
-     * POST - The identifier has been filled with data
+     * POST - The StringBuffer now contains character c
      */
 
-    char nextChar(Scanner in);
+
+    void add(char c);
     /*
      * PRE -
-     * POST - The next character is read and returned
+     * POST - The char c has been added to the destination StringBuffer
      */
 
-    boolean nextCharIs(Scanner in, char c);
+    void remove(int i);
     /*
      * PRE -
-     * POST - TRUE: The next character is equal to the character in parameter
-     *        FALSE: The next character is not equal to the character in parameter
+     * POST - The character at index i of the StringBuffer has been removed
      */
 
-    boolean nextCharIsDigit(Scanner in);
-    /*
-     * PRE -
-     * POST - TRUE: The next character is a digit
-     *        FALSE: The next character is not a digit
-     */
 
-    StringBuffer stringParser(Scanner in);
+
+
     
 
 }

@@ -18,6 +18,18 @@ interface SetInterface {
      */
 
 
+    void add(Identifier a);
+    /*
+     * PRE -
+     * POST - Identifier a has been added to the set
+     */
+
+    int size();
+    /*
+     * PRE -
+     * POST - The size of the set has been returned
+     */
+
     void difference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter);
     /*
      * PRE -

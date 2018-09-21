@@ -12,9 +12,6 @@ public class Assignment1 {
     public static void main(String[] args) {
     	new Assignment1().start();
     }
-    
-
-
 
     boolean askBothSets (Scanner input, Set set1, Set set2) {
         return askSet(input, "Give first set : ", set1) &&
@@ -46,25 +43,34 @@ public class Assignment1 {
     
     boolean inputContainsCorrectSet (Scanner input, Set set) {
 
-
         StringBuffer arrayInput = new StringBuffer();
         int checker = 0;
         int numOfElements = 0;
         if (nextChar(input) ==  '{'){
             
             do {
+                Identifier idento = new Identifier(arrayInput);
+                idento.initIdent('A');
+
                 if(nextCharIs(input, ' ')){
-                	nextChar(input);
-                	set.Add(arrayInput);
+                	set.add(idento);
                     checker = 1;
-                    numOfElements++;
                 }
                 else if (nextCharIsLetter(input)) {
                     checker = 0;
-                    arrayInput.append(nextChar(input));
+                    if(numOfElements == 0){
+                        idento.add(nextChar(input));
+                        //removes the garbage value
+                        idento.remove(0);
+                    }
+                    else{
+                        idento.add(nextChar(input));
+                    }
+
+                    numOfElements++;
                 }
                 else if (nextCharIsDigit(input) && checker != 1) {
-                    arrayInput.append(nextChar(input));
+                    idento.add(nextChar(input));
                 }
                 else {
                     numOfElements++;
