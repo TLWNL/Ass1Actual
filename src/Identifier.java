@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Identifier implements IdentInterface {
 	
-	private StringBuffer sb;
+	private StringBuffer sb = new StringBuffer();
 
 
 	public Identifier(StringBuffer sb){

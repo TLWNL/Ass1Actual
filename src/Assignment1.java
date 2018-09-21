@@ -54,7 +54,9 @@ public class Assignment1 {
 
                 if(nextCharIs(input, ' ')){
                 	set.add(idento);
+                	nextChar(input);
                     checker = 1;
+                    numOfElements++;
                 }
                 else if (nextCharIsLetter(input)) {
                     checker = 0;
@@ -67,7 +69,7 @@ public class Assignment1 {
                         idento.add(nextChar(input));
                     }
 
-                    numOfElements++;
+                    
                 }
                 else if (nextCharIsDigit(input) && checker != 1) {
                     idento.add(nextChar(input));
@@ -80,7 +82,7 @@ public class Assignment1 {
                 }
             }while (!nextCharIs(input, '}'));
             nextChar(input);
-            if (input.hasNext()) {
+            if (nextCharIsDigit(input) || nextCharIsLetter(input) || nextCharIs(input, ' ')) {
             	System.out.println("Input invalid, characters after } detected");
             	input.nextLine();
             	return false;
@@ -91,6 +93,7 @@ public class Assignment1 {
         	return false;
         }
         System.out.println("entered auth");
+        input.nextLine();
         return true;
 
     }
