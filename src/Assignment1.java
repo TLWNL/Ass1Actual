@@ -48,23 +48,24 @@ public class Assignment1 {
         int checker = 0;
         int numOfElements = 0;
         if (nextChar(input) ==  '{'){
-            
+        	Identifier idento = new Identifier(arrayInput);
             do {
-                Identifier idento = new Identifier(arrayInput);
-                idento.initIdent('A');
+                
+                //idento.initIdent('A');
 
                 if(nextCharIs(input, ' ')){
                 	set.add(idento);
                 	nextChar(input);
                     checker = 1;
                     numOfElements++;
+                    idento = new Identifier(arrayInput);
                 }
                 else if (nextCharIsLetter(input)) {
                     checker = 0;
                     if(numOfElements == 0){
                         idento.add(nextChar(input));
                         //removes the garbage value
-                        idento.remove(0);
+                        //idento.remove(0);
                     }
                     else{
                         idento.add(nextChar(input));
@@ -82,7 +83,10 @@ public class Assignment1 {
                     return false;
                 }
             }while (!nextCharIs(input, '}'));
-            nextChar(input);
+        	set.add(idento);
+        	nextChar(input);
+            numOfElements++;
+            idento = new Identifier(arrayInput);
             if (nextCharIsDigit(input) || nextCharIsLetter(input) || nextCharIs(input, ' ')) {
             	System.out.println("Input invalid, characters after } detected");
             	input.nextLine();
@@ -119,7 +123,11 @@ public class Assignment1 {
     }
     
     public void calculateAndGiveOutput (Set set1, Set set2) {
-    	
+    	for (int i = 0; i< set1.size(); i++) {
+    	System.out.println(set1.get(i));
+    	}
+    	//set1 = Set();
+    	//WE NEED TO RESET set1 and set2 HERE, IDK HOW AHH
     }
 }
 

@@ -53,7 +53,7 @@ interface SetInterface {
      * PRE -
      * POST - The symmetric difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
-    
+    public StringBuffer get(int i);
 
 }
 

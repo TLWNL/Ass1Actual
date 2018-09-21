@@ -20,6 +20,11 @@ public class Set implements SetInterface {
 	    return size;
     }
 	
+	public StringBuffer get(int i) {
+		StringBuffer sb = new StringBuffer(set[i].get());
+		
+		return sb;
+	}
 
 
 	

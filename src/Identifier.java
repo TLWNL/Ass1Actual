@@ -26,7 +26,9 @@ public class Identifier implements IdentInterface {
 		sb.deleteCharAt(i);
 	}
 	
-
+public StringBuffer get() {
+	return sb;
+}
 
   /*
     public void parseIdent(Scanner in, StringBuffer dest)
