@@ -35,9 +35,10 @@ public class Assignment1 {
         in.useDelimiter("");
         Set set1 = new Set(),
             set2 = new Set();
-
+        
         while (askBothSets(in, set1, set2)) {
             calculateAndGiveOutput(set1, set2);
+            
         }
     }
     
@@ -119,7 +120,6 @@ public class Assignment1 {
     
     public void calculateAndGiveOutput (Set set1, Set set2) {
     	
-    	System.out.println("WOW OK YES");
     }
 }
 

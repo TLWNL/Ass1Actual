@@ -19,6 +19,8 @@ public class Set implements SetInterface {
 	public int size(){
 	    return size;
     }
+	
+
 
 	
     public void difference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter){
