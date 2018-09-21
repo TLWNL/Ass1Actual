@@ -36,7 +36,8 @@ interface IdentInterface{
      * POST - The character at index i of the StringBuffer has been removed
      */
 
-    public StringBuffer get();
+    StringBuffer get();
+    
 
 
     

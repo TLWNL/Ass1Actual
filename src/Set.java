@@ -10,6 +10,12 @@ public class Set implements SetInterface {
         set = new Identifier[MAX_NUM_OF_ELEMENTS];
         size = 0;
     }
+	
+	public void initSet() {
+		set = null;
+		set = new Identifier[MAX_NUM_OF_ELEMENTS];
+		size = 0;
+	}
 
 	public void add(Identifier a) {
 		set[size] = a;

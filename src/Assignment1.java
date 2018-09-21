@@ -80,6 +80,7 @@ public class Assignment1 {
                     numOfElements++;
                     System.out.println("Input invalid, error detected at element number " + numOfElements);
                     input.nextLine();
+                    set.initSet();
                     return false;
                 }
             }while (!nextCharIs(input, '}'));
@@ -90,11 +91,13 @@ public class Assignment1 {
             if (nextCharIsDigit(input) || nextCharIsLetter(input) || nextCharIs(input, ' ')) {
             	System.out.println("Input invalid, characters after } detected");
             	input.nextLine();
+            	set.initSet();
             	return false;
             }
         }
         else {
         	input.nextLine();
+        	set.initSet();
         	return false;
         }
         System.out.println("entered auth");
@@ -126,8 +129,10 @@ public class Assignment1 {
     	for (int i = 0; i< set1.size(); i++) {
     	System.out.println(set1.get(i));
     	}
-    	//set1 = Set();
-    	//WE NEED TO RESET set1 and set2 HERE, IDK HOW AHH
+        set1.initSet();
+    	for (int i = 0; i< set1.size(); i++) {
+    	System.out.println(set1.get(i));
+    	}
     }
 }
 
