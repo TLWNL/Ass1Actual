@@ -8,24 +8,9 @@ interface IdentInterface{
      *
      * constructors
      *
-     * CreateIdent(StringBuffer toIdent);
+     * InitIdent();
      * PRE -
-     * POST - A new Identifier-object has been created
-     *
-     * CopyIdent(Identifier toCopy);
-     * PRE -
-     * POST - A copy of the Identifier-object has been created
-     */
-
-    Identifier CreateIdent(StringBuffer toIdent);
-
-    Identifier CopyIdent(Identifier toCopy);
-
-
-    void initIdent();
-    /*
-     * PRE -
-     * POST - The identifier is empty
+     * POST - A new Identifier has been created
      */
 
     void parseIdent(Scanner in, StringBuffer dest);
@@ -54,8 +39,7 @@ interface IdentInterface{
      *        FALSE: The next character is not a digit
      */
 
-    StringBuffer[] stringParser(Scanner in);
+    StringBuffer stringParser(Scanner in);
     
-    int counterCounter (StringBuffer[] in);
 
 }

@@ -17,17 +17,6 @@ interface SetInterface {
      * POST - A new Set-object has been created and contains a copy of src
      */
 
-    void InitSet();
-    /*
-     * PRE -
-     * POST - The set is empty.
-     */
-
-    void parseSet(StringBuffer in, StringBuffer arrayDest);
-    /*
-     * PRE -
-     * POST - The element specified in arrayDest has been given the value of in
-     */
 
     void difference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter);
     /*
