@@ -7,7 +7,7 @@ public class Set implements SetInterface {
     private Identifier[] set;
     
 	public Set(){
-        Identifier set[] = new Identifier[MAX_NUM_OF_ELEMENTS];
+        set = new Identifier[MAX_NUM_OF_ELEMENTS];
         size = 0;
     }
 
@@ -16,7 +16,7 @@ public class Set implements SetInterface {
 		size++;
 	}
 
-
+	
     public void difference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter){
         StringBuffer differenceString = new StringBuffer("{");
         boolean intersectFound;

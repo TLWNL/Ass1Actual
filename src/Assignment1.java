@@ -35,6 +35,7 @@ public class Assignment1 {
 
     void start () {
         Scanner in = new Scanner(System.in);
+        in.useDelimiter("");
         Set set1 = new Set(),
             set2 = new Set();
 
@@ -49,9 +50,8 @@ public class Assignment1 {
         StringBuffer arrayInput = new StringBuffer();
         int checker = 0;
         int numOfElements = 0;
-        if (nextCharIs(input, '{')){
-            nextChar(input);
-            nextChar(input);
+        if (nextChar(input) ==  '{'){
+            
             do {
                 if(nextCharIs(input, ' ')){
                 	nextChar(input);
@@ -69,15 +69,22 @@ public class Assignment1 {
                 else {
                     numOfElements++;
                     System.out.println("Input invalid, error detected at element number " + numOfElements);
+                    input.nextLine();
                     return false;
                 }
             }while (!nextCharIs(input, '}'));
             nextChar(input);
             if (input.hasNext()) {
             	System.out.println("Input invalid, characters after } detected");
+            	input.nextLine();
             	return false;
             }
         }
+        else {
+        	input.nextLine();
+        	return false;
+        }
+        System.out.println("entered auth");
         return true;
 
     }
