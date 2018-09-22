@@ -1,4 +1,6 @@
-interface SetInterface{
+import java.util.Scanner;
+
+interface SetInterface {
     /*
      * Elements: identifiers of the type StringBuffer
      * Structure: linear
@@ -15,41 +17,45 @@ interface SetInterface{
      * POST - A new Set-object has been created and contains a copy of src
      */
 
-    void InitSet();
+
+    void add(Identifier a);
     /*
      * PRE -
-     * POST - The set is empty.
+     * POST - Identifier a has been added to the set
      */
 
-    void parseSet(StringBuffer in, StringBuffer arrayDest);
+    int size();
     /*
      * PRE -
-     * POST - The element specified in arrayDest has been given the value of in
+     * POST - The size of the set has been returned
      */
 
-    void difference(StringBuffer arrayInput1, StringBuffer arrayInput2);
+    void difference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter);
     /*
      * PRE -
      * POST - The difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void intersection(StringBuffer arrayInput1, StringBuffer arrayInput2);
+    StringBuffer[] intersection(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter);
     /*
      * PRE -
      * POST - The intersection between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void union(StringBuffer arrayInput1, StringBuffer arrayInput2);
+    void union(Set set);
     /*
      * PRE -
      * POST - The union between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void symmetricDifference(StringBuffer arrayInput1, StringBuffer arrayInput2);
+    void symmetricDifference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter);
     /*
      * PRE -
      * POST - The symmetric difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
+    StringBuffer get(int i);
+    
+    void initSet();
 
 }
 
