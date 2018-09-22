@@ -126,14 +126,17 @@ public class Assignment1 {
     }
     
     public void calculateAndGiveOutput (Set set1, Set set2) {
-    	for (int i = 0; i< set1.size(); i++) {
+
+        /*for (int i = 0; i< set1.size(); i++) {
     	System.out.println(set1.get(i));
     	}
     	for (int i = 0; i< set1.size(); i++) {
     	System.out.println(set2.get(i));
-    	}
-    	
-    	set1.union(set2);
+    	}*/
+        set1.difference(set2);
+    	set1.intersection(set2);
+        set1.union(set2);
+        set1.symmetricDifference(set2);
         set1.initSet();
         set2.initSet();
     }

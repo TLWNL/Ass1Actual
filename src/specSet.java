@@ -12,7 +12,7 @@ interface SetInterface {
      * PRE -
      * POST - A new Set-object has been created and contains the empty set
      *
-     * InitSet (InitSet src);
+     * CopySet (Set src);
      * PRE -
      * POST - A new Set-object has been created and contains a copy of src
      */
@@ -30,13 +30,13 @@ interface SetInterface {
      * POST - The size of the set has been returned
      */
 
-    void difference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter);
+    void difference(Set set2);
     /*
      * PRE -
      * POST - The difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    StringBuffer[] intersection(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter);
+    StringBuffer[] intersection(Set set2);
     /*
      * PRE -
      * POST - The intersection between Set 1 and Set 2 has been calculated, formatted and printed
@@ -48,7 +48,7 @@ interface SetInterface {
      * POST - The union between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void symmetricDifference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter);
+    void symmetricDifference(Set set2);
     /*
      * PRE -
      * POST - The symmetric difference between Set 1 and Set 2 has been calculated, formatted and printed
