@@ -42,7 +42,7 @@ interface SetInterface {
      * POST - The intersection between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void union(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter);
+    void union(Set set);
     /*
      * PRE -
      * POST - The union between Set 1 and Set 2 has been calculated, formatted and printed

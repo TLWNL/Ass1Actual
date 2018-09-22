@@ -94,29 +94,29 @@ public class Set implements SetInterface {
         return intersectArray;
     }
 
-    public void union(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter){
+    public void union(Set set2){
         StringBuffer unionString = new StringBuffer("{");
         boolean intersectFound;
-        for(int i = 0; i<arrayInputer1Counter;i++){
+        for(int i = 0; i<size;i++){
             intersectFound = false;
-            for(int j = 0 ; j<arrayInputer2Counter; j++){
-                if((arrayInput1[i].toString()).equals((arrayInput2[j].toString()))){
+            for(int j = 0 ; j<set2.size(); j++){
+                if((get(i).toString()).equals((set2.get(j).toString()))){
                     intersectFound = true;
                 }
             }
             if(!intersectFound) {
-                unionString.append(arrayInput1[i]);
-                unionString.append(", ");
+                unionString.append(get(i));
+                unionString.append(" ");
             }
         }
 
-        for(int k=0;k<arrayInputer2Counter;k++){
-                unionString.append(arrayInput2[k]);
-                unionString.append(", ");
+        for(int k=0;k<set2.size();k++){
+                unionString.append(set2.get(k));
+                unionString.append(" ");
         }
 
         if(unionString.length() != 1)
-            unionString.delete(unionString.length()-2, unionString.length());
+            unionString.delete(unionString.length()-1, unionString.length());
         unionString.append("}");
 
         System.out.printf("union = %s\n", unionString);

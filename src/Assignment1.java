@@ -129,10 +129,13 @@ public class Assignment1 {
     	for (int i = 0; i< set1.size(); i++) {
     	System.out.println(set1.get(i));
     	}
-        set1.initSet();
     	for (int i = 0; i< set1.size(); i++) {
-    	System.out.println(set1.get(i));
+    	System.out.println(set2.get(i));
     	}
+    	
+    	set1.union(set2);
+        set1.initSet();
+        set2.initSet();
     }
 }
 
