@@ -18,7 +18,7 @@ public class Set implements SetInterface {
 	}
 
 	public void CopySet(Set src){
-	    this(src.set)
+	   //this(src.set);
     }
 
 	public void add(Identifier a) {
@@ -126,24 +126,24 @@ public class Set implements SetInterface {
     }
 
     public void symmetricDifference(Set set2){
-        StringBuffer symmetricDifferenceString = new StringBuffer("{");
+    	        StringBuffer symmetricDifferenceString = new StringBuffer("{");
         int intersectArrayLength = 0;
         StringBuffer[] intersectArray = this.intersection(set2);
         for(int i = 0; i<intersectArray.length;i++){
             if(intersectArray[i] != null)
                 intersectArrayLength++;
-            System.out.printf("Size of Intersection is: %d", intersectArray);
+            //System.out.printf("Size of Intersection is: %d", intersectArrayLength);
 
         }
 
         for(int j = 0; j<size;j++){
             boolean intersectFound = false;
             for(int k = 0; k<intersectArrayLength;k++){
-                if(get(k).toString().equals(intersectArray[k].toString())){
+                if(get(j).toString().equals(intersectArray[k].toString())){
                     intersectFound = true;
                 }
             }
-            if(!intersectFound){
+                        if(!intersectFound){
                 symmetricDifferenceString.append(get(j));
                 symmetricDifferenceString.append(" ");
             }
@@ -151,7 +151,7 @@ public class Set implements SetInterface {
         for(int l = 0; l<set2.size();l++){
             boolean intersectFound = false;
             for(int m = 0; m<intersectArrayLength;m++){
-                if(this.get(l).toString().equals(intersectArray[m].toString())){
+                if(set2.get(l).toString().equals(intersectArray[m].toString())){
                     intersectFound = true;
                 }
             }
@@ -165,7 +165,7 @@ public class Set implements SetInterface {
             symmetricDifferenceString.delete(symmetricDifferenceString.length() - 1,symmetricDifferenceString.length());
         symmetricDifferenceString.append("}");
 
-        System.out.printf("sym. difference = %s" , symmetricDifferenceString);
+        System.out.printf("sym. difference = %s\n" , symmetricDifferenceString);
 
     }
 
