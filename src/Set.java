@@ -1,5 +1,3 @@
-
-
 public class Set implements SetInterface {
 
     private static final int MAX_NUM_OF_ELEMENTS = 10;
@@ -7,71 +5,78 @@ public class Set implements SetInterface {
     private Identifier[] set;
     
 	public Set(){
-        set = new Identifier[MAX_NUM_OF_ELEMENTS];
-        size = 0;
+        this.set = new Identifier[MAX_NUM_OF_ELEMENTS];
+    }
+
+    public Set(Set src) {
+        int i = 0;
+
+        while (this.set[i] != null) {
+            this.set[i] = src.set[i];
+            i++;
+        }
     }
 	
 	public void initSet() {
-		set = null;
-		set = new Identifier[MAX_NUM_OF_ELEMENTS];
-		size = 0;
+        this.set = null;
+        this.size = 0;
 	}
 
-	public void CopySet(Set src){
-	   //this(src.set);
-    }
-
 	public void add(Identifier a) {
-		set[size] = a;
+		this.set[size] = a;
 		size++;
 	}
 
 	public int size(){
 	    return size;
     }
-	
+/*
 	public StringBuffer get(int i) {
-		StringBuffer sb = new StringBuffer(set[i].get());
-		
+	    // ! Should I make a deep copy here? !
+		Identifier sb = set[i].getIdent();
 		return sb;
 	}
+*/
+    public void printSet(){
+	    StringBuffer sb = new StringBuffer("{");
+        int i = 0;
 
+	    while(this.set[i]!=null){
+	        System.out.println(this.set[i].toString());
+            sb.append(this.set[i].toString());
+            sb.append(" ");
+            i++;
+        }
 
+        // removes the last space
+        sb.deleteCharAt(sb.length()-1);
+	    sb.append("}");
+
+	    System.out.printf("%s\n", sb);
+    }
 	
-    public void difference(Set set2){
-        StringBuffer differenceString = new StringBuffer("{");
+    public Set difference(Set set2){
+
+        Set differenceSet = new Set();
+        int difSetCounter = 0;
         boolean intersectFound;
 
-        for(int i = 0; i<size;i++){
+        for(int i = 0; i<this.size;i++){
             intersectFound = false;
             for(int j = 0 ; j<set2.size(); j++){
-                if((get(i).toString()).equals((set2.get(j).toString()))){
+                // !!! RIGHT HERE IS WHERE THE 'BUG' HAPPENS, IT OUTPUTS MEMORY LOCATION INSTEAD OF STRING REP
+                if((this.set[i].toString()).equals((set2.set[j].toString()))){
                     intersectFound = true;
                 }
             }
             if(!intersectFound){
-                differenceString.append(get(i));
-                differenceString.append(" ");
+                differenceSet.set[difSetCounter] = new Identifier(this.set[i]);
+                difSetCounter++;
+                differenceSet.set[difSetCounter] = new Identifier(set2.set[i]);
+                difSetCounter++;
             }
         }
-        /*
-        for(int k = 0; k<set2.size();k++){
-            intersectFound = false;
-            for(int l = 0; l<size;l++){
-                if((get(k).toString()).equals((set2.get(l).toString())))
-                    intersectFound = true;
-            }
-            if(!intersectFound){
-                differenceString.append(set2.get(k));
-                differenceString.append(" ");
-            }
-        }
-        */
-        if(differenceString.length() != 1)
-            differenceString.delete(differenceString.length()-1, differenceString.length());
-        differenceString.append("}");
-
-        System.out.printf("difference = %s\n", differenceString);
+        return differenceSet;
     }
 
     public StringBuffer[] intersection(Set set2){
@@ -80,9 +85,9 @@ public class Set implements SetInterface {
         int arrayCounter=0;
             for(int i = 0; i<size;i++){
                 for(int j = 0; j<set2.size();j++){
-                if((get(i).toString()).equals((set2.get(j).toString()))){
-                    intersectionString.append(get(i));
-                    intersectArray[arrayCounter] = get(i);
+                if((this.set[i].toString()).equals((set2.set[j].toString()))){
+                    //intersectionString.append(get(i));
+                    //intersectArray[arrayCounter] = get(i);
                     arrayCounter++;
                 }
             }
@@ -102,18 +107,18 @@ public class Set implements SetInterface {
         for(int i = 0; i<size;i++){
             intersectFound = false;
             for(int j = 0 ; j<set2.size(); j++){
-                if((get(i).toString()).equals((set2.get(j).toString()))){
-                    intersectFound = true;
-                }
+                //if((get(i).toString()).equals((set2.get(j).toString()))){
+                    //intersectFound = true;
+                //}
             }
             if(!intersectFound) {
-                unionString.append(get(i));
+               // unionString.append(get(i));
                 unionString.append(" ");
             }
         }
 
         for(int k=0;k<set2.size();k++){
-                unionString.append(set2.get(k));
+                //unionString.append(set2.get(k));
                 unionString.append(" ");
         }
 
@@ -139,24 +144,24 @@ public class Set implements SetInterface {
         for(int j = 0; j<size;j++){
             boolean intersectFound = false;
             for(int k = 0; k<intersectArrayLength;k++){
-                if(get(j).toString().equals(intersectArray[k].toString())){
-                    intersectFound = true;
-                }
+                //if(get(j).toString().equals(intersectArray[k].toString())){
+                //    intersectFound = true;
+                //}
             }
                         if(!intersectFound){
-                symmetricDifferenceString.append(get(j));
+               // symmetricDifferenceString.append(get(j));
                 symmetricDifferenceString.append(" ");
             }
         }
         for(int l = 0; l<set2.size();l++){
             boolean intersectFound = false;
             for(int m = 0; m<intersectArrayLength;m++){
-                if(set2.get(l).toString().equals(intersectArray[m].toString())){
-                    intersectFound = true;
-                }
+               // if(set2.get(l).toString().equals(intersectArray[m].toString())){
+               //     intersectFound = true;
+               //}
             }
             if(!intersectFound){
-                symmetricDifferenceString.append(set2.get(l));
+                //symmetricDifferenceString.append(set2.get(l));
                 symmetricDifferenceString.append(" ");
             }
         }

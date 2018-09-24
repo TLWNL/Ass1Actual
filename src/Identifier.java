@@ -8,39 +8,43 @@ public class Identifier implements IdentInterface {
 	private StringBuffer sb = new StringBuffer();
 
 
-	public Identifier(StringBuffer sb){
-	    StringBuffer ident = new StringBuffer(sb);
+	public Identifier(){
+	    StringBuffer ident = new StringBuffer("A");
 	}
+
+	public Identifier(Identifier src){
+        StringBuffer foundIdentString = new StringBuffer(this.sb);
+        Identifier foundIdent = new Identifier();
+        for(int i = 0; i< foundIdentString.length(); i++){
+            foundIdent.add(foundIdentString.charAt(i));
+        }
+    }
 
 
     public void add(char c){
 		sb.append(c);
 	}
 
-	public void initIdent(char c){
-		sb.append(c);
+	public void initIdent(){
+		sb.append("A");
 	}
-
 
 	public void remove(int i){
 		sb.deleteCharAt(i);
 	}
-	
-public StringBuffer get() {
-	return sb;
-}
 
-  /*
-    public void parseIdent(Scanner in, StringBuffer dest)
-    {
-        // Check if the first character that is to be read is a number
-        if(dest.length() == 0 && nextCharIsDigit(in)){
-            // Throw an error
-        }
-        while(!nextCharIs(in, ' ')){
-            dest.append(nextChar(in));
-        }
+	// ! NOT SURE ABOUT THIS ONE, I BELIEVE IT SHOULD RETURN A RANDOM ELEMENT BUT HOW DOES THAT WORK FOR IDENTS !
+    public Identifier getIdent(){
+	    return this;
     }
-    */
+
+    public StringBuffer convertToSb(){
+	    StringBuffer convertedIdentifier = new StringBuffer();
+	    for(int i = 0; i<sb.length(); i++){
+	        convertedIdentifier.append(sb.charAt(i));
+        }
+        return convertedIdentifier;
+    }
+
 
 }

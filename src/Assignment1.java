@@ -38,56 +38,58 @@ public class Assignment1 {
         
         while (askBothSets(in, set1, set2)) {
             calculateAndGiveOutput(set1, set2);
-            
         }
     }
     
     boolean inputContainsCorrectSet (Scanner input, Set set) {
 
-        StringBuffer arrayInput = new StringBuffer();
+        //StringBuffer arrayInput = new StringBuffer();
         int checker = 0;
         int numOfElements = 0;
         if (nextChar(input) ==  '{'){
-        	Identifier idento = new Identifier(arrayInput);
             do {
-                
-                //idento.initIdent('A');
+                // Create a new Identifier
+                Identifier ident = new Identifier();
+                ident.initIdent();
 
+                // Add Identifier to set
                 if(nextCharIs(input, ' ')){
-                	set.add(idento);
+
+                    ident.remove(0);                           //removes the garbage value
+                	set.add(ident);                               // Skip the space
                 	nextChar(input);
+
+                	// ! What is checker for? !
                     checker = 1;
                     numOfElements++;
-                    idento = new Identifier(arrayInput);
                 }
+
+                // Read character into identifier
                 else if (nextCharIsLetter(input)) {
                     checker = 0;
+
                     if(numOfElements == 0){
-                        idento.add(nextChar(input));
-                        //removes the garbage value
-                        //idento.remove(0);
+                        while(!nextCharIs(input, ' ')){         // Skip the spaces
+                            ident.add(nextChar(input));
+                        }
                     }
                     else{
-                        idento.add(nextChar(input));
+                        ident.add(nextChar(input));
                     }
-
-                    
                 }
+                // ??
                 else if (nextCharIsDigit(input) && checker != 1) {
-                    idento.add(nextChar(input));
+                    ident.add(nextChar(input));
                 }
                 else {
                     numOfElements++;
-                    System.out.println("Input invalid, error detected at element number " + numOfElements);
+                    System.out.println("Input invalid, error detected");
                     input.nextLine();
-                    set.initSet();
+                    //set.initSet();
                     return false;
                 }
-            }while (!nextCharIs(input, '}'));
-        	set.add(idento);
-        	nextChar(input);
-            numOfElements++;
-            idento = new Identifier(arrayInput);
+            } while(!nextCharIs(input, '}'));
+
             if (nextCharIsDigit(input) || nextCharIsLetter(input) || nextCharIs(input, ' ')) {
             	System.out.println("Input invalid, characters after } detected");
             	input.nextLine();
@@ -133,12 +135,9 @@ public class Assignment1 {
     	for (int i = 0; i< set1.size(); i++) {
     	System.out.println(set2.get(i));
     	}*/
-        set1.difference(set2);
-    	set1.intersection(set2);
-        set1.union(set2);
-        set1.symmetricDifference(set2);
-        set1.initSet();
-        set2.initSet();
+        Set differenceSet = set1.difference(set2);
+        differenceSet.printSet();
+        System.out.println("DONE\n");
     }
 }
 

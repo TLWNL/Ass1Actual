@@ -8,38 +8,36 @@ interface IdentInterface{
      *
      * constructors
      *
-     * Identifier(StringBuffer sb);
+     * Identifier();
      * PRE -
      * POST - A new Identifier has been created
      *
-     * CopyIdentifier(Identifier src);
+     * Identifier(Identifier src);
      * PRE -
      * POST - A copy of the src Identifier has been created
      */
 
-    void initIdent(char c);
+    void initIdent();
     /*
      * PRE -
-     * POST - The StringBuffer now contains character c
+     * POST - The Identifier now contains the char "A"
      */
-
 
     void add(char c);
     /*
      * PRE -
-     * POST - The char c has been added to the destination StringBuffer
+     * POST - The char c has been added to the Identifier
      */
 
     void remove(int i);
     /*
      * PRE -
-     * POST - The character at index i of the StringBuffer has been removed
+     * POST - The character at index i of the Identifier has been removed
      */
 
-    StringBuffer get();
-    
-
-
-    
-
+    Identifier getIdent();
+    /*
+     * PRE -
+     * POST - The identifier has been returned
+     */
 }
