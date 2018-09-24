@@ -4,7 +4,7 @@ interface SetInterface {
     /*
      * Elements: identifiers of the type StringBuffer
      * Structure: linear
-     * Domain: 0 to 20 elements
+     * Domain: 0 to 10 elements
      *
      * Constructors
      *
@@ -12,7 +12,7 @@ interface SetInterface {
      * PRE -
      * POST - A new Set-object has been created and contains the empty set
      *
-     * InitSet (InitSet src);
+     * Set(Set src);
      * PRE -
      * POST - A new Set-object has been created and contains a copy of src
      */
@@ -24,36 +24,53 @@ interface SetInterface {
      * POST - Identifier a has been added to the set
      */
 
+    void printSet();
+    /*
+     * PRE -
+     * POST - The Set has been printed out
+     *
+     */
+
     int size();
     /*
      * PRE -
      * POST - The size of the set has been returned
      */
 
-    void difference(Set set1, Set[] set2);
+    //StringBuffer get(int i);
+    /*
+     * PRE -
+     * POST - Returns element i of the set in the form of a StringBuffer
+     */
+
+    Set difference(Set set2);
     /*
      * PRE -
      * POST - The difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    StringBuffer[] intersection(Set set1, Set[] set2);
+    StringBuffer[] intersection(Set set2);
     /*
      * PRE -
      * POST - The intersection between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void union(Set set1, Set[] set2);
+    void union(Set set);
     /*
      * PRE -
      * POST - The union between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void symmetricDifference(Set set1, Set[] set2);
+    void symmetricDifference(Set set2);
     /*
      * PRE -
      * POST - The symmetric difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
+    
+    void initSet();
+    
+    public boolean dupChecker(Identifier src);
 
 }
 
