@@ -126,7 +126,7 @@ public class Assignment1 {
         return true;
 
     }
-    
+
     public char nextChar(Scanner in){
         return in.next().charAt(0);
     }

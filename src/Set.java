@@ -46,6 +46,19 @@ public class Set implements SetInterface {
 	    return size;
     }
 
+    public boolean isEmpty(){
+	    if(this.size == 0)
+	        return true;
+        else
+	        return false;
+    }
+
+    public void remove(int i){
+	    Identifier emptyIdent = new Identifier();
+	    this.set[i] = emptyIdent;
+    }
+
+    // Does this need to be in Ident? So it can return an ident?
 	public StringBuffer get(int i) {
 		StringBuffer sb2 = new StringBuffer(set[i].getIdent());
 		return sb2;

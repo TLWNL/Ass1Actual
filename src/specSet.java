@@ -43,6 +43,19 @@ interface SetInterface {
      * POST - The size of the set has been returned
      */
 
+    void remove(int i);
+    /*
+     * PRE -
+     * POST - The element at index i of the set has been removed
+     */
+
+    boolean isEmpty();
+    /*
+     * PRE -
+     * POST - TRUE: The set is empty
+     *        FALSE: The set is not empty
+     */
+
     //StringBuffer get(int i);
     /*
      * PRE -
@@ -79,6 +92,5 @@ interface SetInterface {
      * POST - TRUE: The identifiers are not duplicates
      *      - FALSE: The identifiers are duplicates
      */
-
 }
 
