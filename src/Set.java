@@ -5,25 +5,30 @@ public class Set implements SetInterface {
     private static final int MAX_NUM_OF_ELEMENTS = 10;
     private int size;
     private Identifier[] set;
-    
-	public Set(){
+
+    public Set(){
         set = new Identifier[MAX_NUM_OF_ELEMENTS];
         size = 0;
     }
 
-	public void Add(StringBuffer a ) {
-		set[size] = new Identifier(a);
-		size++;
-	}
+    public void add(Identifier a) {
+        set[size] = a;
+        size++;
+    }
 
-	
-    public void difference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter){
+    public int size(){
+        return size;
+    }
+
+
+    public void difference(Set set1, Set[] set2){
         StringBuffer differenceString = new StringBuffer("{");
         boolean intersectFound;
 
-        for(int i = 0; i<arrayInputer1Counter;i++){
+
+        for(int i = 0; i<set1.size();;i++){
             intersectFound = false;
-            for(int j = 0 ; j<arrayInputer2Counter; j++){
+            for(int j = 0 ; j<set2.size(); j++){
                 if((arrayInput1[i].toString()).equals((arrayInput2[j].toString()))){
                     intersectFound = true;
                 }
@@ -53,7 +58,7 @@ public class Set implements SetInterface {
         System.out.printf("difference = %s\n", differenceString);
     }
 
-    public StringBuffer[] intersection(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter){
+    public StringBuffer[] intersection(Set set1, Set[] set2){
         StringBuffer intersectionString = new StringBuffer("{");
         StringBuffer[] intersectArray = new StringBuffer[10];
         int arrayCounter=0;
@@ -77,7 +82,7 @@ public class Set implements SetInterface {
         return intersectArray;
     }
 
-    public void union(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter){
+    public void union(Set set1, Set[] set2){
         StringBuffer unionString = new StringBuffer("{");
         boolean intersectFound;
         for(int i = 0; i<arrayInputer1Counter;i++){
@@ -94,8 +99,8 @@ public class Set implements SetInterface {
         }
 
         for(int k=0;k<arrayInputer2Counter;k++){
-                unionString.append(arrayInput2[k]);
-                unionString.append(", ");
+            unionString.append(arrayInput2[k]);
+            unionString.append(", ");
         }
 
         if(unionString.length() != 1)
@@ -106,7 +111,7 @@ public class Set implements SetInterface {
 
     }
 
-    public void symmetricDifference(StringBuffer[] arrayInput1, StringBuffer[] arrayInput2, int arrayInputer1Counter, int arrayInputer2Counter){
+    public void symmetricDifference(Set set1, Set[] set2){
         StringBuffer symmetricDifferenceString = new StringBuffer("{");
         int intersectArrayLength = 0;
         StringBuffer[] intersectArray = intersection(arrayInput1,arrayInput2,arrayInputer1Counter,arrayInputer2Counter);
