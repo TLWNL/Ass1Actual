@@ -16,9 +16,24 @@ public class Set implements SetInterface {
             i++;
         }
     }
+    
+
+	public boolean dupChecker(Identifier src) {
+    	
+    	for(int i = 0; i<size; i++) {
+    		if((src.getIdent().toString()).equals(this.get(i).toString())) {
+    			return false;
+    		}
+    		else {
+    	    	return true;
+    		}
+    	}
+    	return true;
+    }
 	
 	public void initSet() {
         this.set = null;
+        this.set = new Identifier[MAX_NUM_OF_ELEMENTS];
         this.size = 0;
 	}
 
@@ -30,20 +45,20 @@ public class Set implements SetInterface {
 	public int size(){
 	    return size;
     }
-/*
+
 	public StringBuffer get(int i) {
-	    // ! Should I make a deep copy here? !
-		Identifier sb = set[i].getIdent();
-		return sb;
+		StringBuffer sb2 = new StringBuffer(set[i].getIdent());
+		
+		return sb2;
 	}
-*/
+
     public void printSet(){
 	    StringBuffer sb = new StringBuffer("{");
         int i = 0;
 
 	    while(this.set[i]!=null){
-	        System.out.println(this.set[i].toString());
-            sb.append(this.set[i].toString());
+	        System.out.println(this.get(i));
+            sb.append(this.get(i).toString());
             sb.append(" ");
             i++;
         }
@@ -65,15 +80,39 @@ public class Set implements SetInterface {
             intersectFound = false;
             for(int j = 0 ; j<set2.size(); j++){
                 // !!! RIGHT HERE IS WHERE THE 'BUG' HAPPENS, IT OUTPUTS MEMORY LOCATION INSTEAD OF STRING REP
-                if((this.set[i].toString()).equals((set2.set[j].toString()))){
+                if((this.get(i).toString()).equals((set2.get(j).toString()))){
+                	
                     intersectFound = true;
                 }
             }
             if(!intersectFound){
-                differenceSet.set[difSetCounter] = new Identifier(this.set[i]);
+                /*differenceSet.set[difSetCounter] = new Identifier(this.set[i]);
                 difSetCounter++;
                 differenceSet.set[difSetCounter] = new Identifier(set2.set[i]);
+                difSetCounter++;*/
+            	Identifier A = new Identifier(get(i));
+            	differenceSet.set[difSetCounter] = A;
+            	difSetCounter++;
+            }
+        }
+        
+        for(int k = 0; k<set2.size;k++){
+            intersectFound = false;
+            for(int l = 0 ; l<this.size(); l++){
+                // !!! RIGHT HERE IS WHERE THE 'BUG' HAPPENS, IT OUTPUTS MEMORY LOCATION INSTEAD OF STRING REP
+                if((this.get(l).toString()).equals((set2.get(k).toString()))){
+                	
+                    intersectFound = true;
+                }
+            }
+            if(!intersectFound){
+                /*differenceSet.set[difSetCounter] = new Identifier(this.set[i]);
                 difSetCounter++;
+                differenceSet.set[difSetCounter] = new Identifier(set2.set[i]);
+                difSetCounter++;*/
+            	Identifier A = new Identifier(set2.get(k));
+            	differenceSet.set[difSetCounter] = A;
+            	difSetCounter++;
             }
         }
         return differenceSet;

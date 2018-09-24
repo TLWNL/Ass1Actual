@@ -47,21 +47,26 @@ public class Assignment1 {
         int checker = 0;
         int numOfElements = 0;
         if (nextChar(input) ==  '{'){
+            Identifier ident = new Identifier();
             do {
-                // Create a new Identifier
-                Identifier ident = new Identifier();
-                ident.initIdent();
-
+            	
                 // Add Identifier to set
                 if(nextCharIs(input, ' ')){
+                	if(set.dupChecker(ident)) {
+                        //ident.remove(0);                           //removes the garbage value
+                    	set.add(ident);                               // Skip the space
+                    	nextChar(input);
 
-                    ident.remove(0);                           //removes the garbage value
-                	set.add(ident);                               // Skip the space
-                	nextChar(input);
-
-                	// ! What is checker for? !
-                    checker = 1;
-                    numOfElements++;
+                    	// ! What is checker for? !
+                        checker = 1;
+                        numOfElements++;
+                        ident = new Identifier();
+                	}
+                	else {
+                		set.initSet();
+                		System.out.println("Input invalid, error detected, duplicate identifier");
+                		return false;
+                	}
                 }
 
                 // Read character into identifier
@@ -69,9 +74,9 @@ public class Assignment1 {
                     checker = 0;
 
                     if(numOfElements == 0){
-                        while(!nextCharIs(input, ' ')){         // Skip the spaces
+                        //while(!nextCharIs(input, ' ')){         // Skip the spaces
                             ident.add(nextChar(input));
-                        }
+                        //}
                     }
                     else{
                         ident.add(nextChar(input));
@@ -85,11 +90,25 @@ public class Assignment1 {
                     numOfElements++;
                     System.out.println("Input invalid, error detected");
                     input.nextLine();
-                    //set.initSet();
+                    set.initSet();
                     return false;
                 }
             } while(!nextCharIs(input, '}'));
+            if(set.dupChecker(ident)) {
+                //ident.remove(0);                           //removes the garbage value
+            	set.add(ident);                               // Skip the space
+            	nextChar(input);
 
+            	// ! What is checker for? !
+                checker = 1;
+                numOfElements++;
+                ident = new Identifier();
+        	}
+        	else {
+        		set.initSet();
+        		System.out.println("Input invalid, error detected, duplicate identifier");
+        		return false;
+        	}
             if (nextCharIsDigit(input) || nextCharIsLetter(input) || nextCharIs(input, ' ')) {
             	System.out.println("Input invalid, characters after } detected");
             	input.nextLine();
@@ -102,6 +121,8 @@ public class Assignment1 {
         	set.initSet();
         	return false;
         }
+        
+        
         System.out.println("entered auth");
         input.nextLine();
         return true;
@@ -138,6 +159,10 @@ public class Assignment1 {
         Set differenceSet = set1.difference(set2);
         differenceSet.printSet();
         System.out.println("DONE\n");
+        set1.initSet();
+        set2.initSet();
+        
+        
     }
 }
 

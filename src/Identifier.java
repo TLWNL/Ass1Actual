@@ -19,6 +19,10 @@ public class Identifier implements IdentInterface {
             foundIdent.add(foundIdentString.charAt(i));
         }
     }
+	
+	public Identifier(StringBuffer sbr){
+	    sb = new StringBuffer(sbr);
+	}
 
 
     public void add(char c){
@@ -34,8 +38,8 @@ public class Identifier implements IdentInterface {
 	}
 
 	// ! NOT SURE ABOUT THIS ONE, I BELIEVE IT SHOULD RETURN A RANDOM ELEMENT BUT HOW DOES THAT WORK FOR IDENTS !
-    public Identifier getIdent(){
-	    return this;
+    public StringBuffer getIdent(){
+	    return 	sb;
     }
 
     public StringBuffer convertToSb(){

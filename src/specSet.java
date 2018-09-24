@@ -69,6 +69,8 @@ interface SetInterface {
 
     
     void initSet();
+    
+    public boolean dupChecker(Identifier src);
 
 }
 

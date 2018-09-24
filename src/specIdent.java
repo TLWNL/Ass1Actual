@@ -35,9 +35,10 @@ interface IdentInterface{
      * POST - The character at index i of the Identifier has been removed
      */
 
-    Identifier getIdent();
+    StringBuffer getIdent();
     /*
      * PRE -
      * POST - The identifier has been returned
      */
+    
 }
