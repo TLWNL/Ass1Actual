@@ -1,12 +1,9 @@
-
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 public class Assignment1 {
-
     static final int MAX_NUMBER_OF_ELEMENTS = 10;
-
     PrintStream out;
     
     public static void main(String[] args) {
@@ -40,7 +37,8 @@ public class Assignment1 {
             calculateAndGiveOutput(set1, set2);
         }
     }
-    
+
+
     boolean inputContainsCorrectSet (Scanner input, Set set) {
 
         //StringBuffer arrayInput = new StringBuffer();
@@ -49,24 +47,24 @@ public class Assignment1 {
         if (nextChar(input) ==  '{'){
             Identifier ident = new Identifier();
             do {
-            	
+
                 // Add Identifier to set
                 if(nextCharIs(input, ' ')){
-                	if(set.dupChecker(ident)) {
+                    if(set.dupChecker(ident)) {
                         //ident.remove(0);                           //removes the garbage value
-                    	set.add(ident);                               // Skip the space
-                    	nextChar(input);
+                        set.add(ident);                               // Skip the space
+                        nextChar(input);
 
-                    	// ! What is checker for? !
+                        // ! What is checker for? !
                         checker = 1;
                         numOfElements++;
                         ident = new Identifier();
-                	}
-                	else {
-                		set.initSet();
-                		System.out.println("Input invalid, error detected, duplicate identifier");
-                		return false;
-                	}
+                    }
+                    else {
+                        set.initSet();
+                        System.out.println("Input invalid, error detected, duplicate identifier");
+                        return false;
+                    }
                 }
 
                 // Read character into identifier
@@ -75,7 +73,7 @@ public class Assignment1 {
 
                     if(numOfElements == 0){
                         //while(!nextCharIs(input, ' ')){         // Skip the spaces
-                            ident.add(nextChar(input));
+                        ident.add(nextChar(input));
                         //}
                     }
                     else{
@@ -96,39 +94,38 @@ public class Assignment1 {
             } while(!nextCharIs(input, '}'));
             if(set.dupChecker(ident)) {
                 //ident.remove(0);                           //removes the garbage value
-            	set.add(ident);                               // Skip the space
-            	nextChar(input);
+                set.add(ident);                               // Skip the space
+                nextChar(input);
 
-            	// ! What is checker for? !
+                // ! What is checker for? !
                 checker = 1;
                 numOfElements++;
                 ident = new Identifier();
-        	}
-        	else {
-        		set.initSet();
-        		System.out.println("Input invalid, error detected, duplicate identifier");
-        		return false;
-        	}
+            }
+            else {
+                set.initSet();
+                System.out.println("Input invalid, error detected, duplicate identifier");
+                return false;
+            }
             if (nextCharIsDigit(input) || nextCharIsLetter(input) || nextCharIs(input, ' ')) {
-            	System.out.println("Input invalid, characters after } detected");
-            	input.nextLine();
-            	set.initSet();
-            	return false;
+                System.out.println("Input invalid, characters after } detected");
+                input.nextLine();
+                set.initSet();
+                return false;
             }
         }
         else {
-        	input.nextLine();
-        	set.initSet();
-        	return false;
+            input.nextLine();
+            set.initSet();
+            return false;
         }
-        
-        
+
+
         System.out.println("entered auth");
         input.nextLine();
         return true;
 
     }
-
     
     public char nextChar(Scanner in){
         return in.next().charAt(0);
@@ -149,20 +146,20 @@ public class Assignment1 {
     }
     
     public void calculateAndGiveOutput (Set set1, Set set2) {
-
-        /*for (int i = 0; i< set1.size(); i++) {
-    	System.out.println(set1.get(i));
-    	}
-    	for (int i = 0; i< set1.size(); i++) {
-    	System.out.println(set2.get(i));
-    	}*/
         Set differenceSet = set1.difference(set2);
+        System.out.printf("difference = ");
         differenceSet.printSet();
-        System.out.println("DONE\n");
+        Set intersectionSet = set1.intersection(set2);
+        System.out.printf("intersection = ");
+        intersectionSet.printSet();
+        Set unionSet = set1.union(set2);
+        System.out.printf("union = ");
+        unionSet.printSet();
+        System.out.printf("sym. dif. = ");
+        Set symdifSet = set1.symmetricDifference(set2);
+        symdifSet.printSet();
         set1.initSet();
         set2.initSet();
-        
-        
     }
 }
 

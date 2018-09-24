@@ -18,6 +18,12 @@ interface SetInterface {
      */
 
 
+    void initSet();
+    /*
+     * PRE -
+     * POST -
+     */
+
     void add(Identifier a);
     /*
      * PRE -
@@ -49,28 +55,30 @@ interface SetInterface {
      * POST - The difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    StringBuffer[] intersection(Set set2);
+    Set intersection(Set set2);
     /*
      * PRE -
      * POST - The intersection between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void union(Set set);
+    Set union(Set set);
     /*
      * PRE -
      * POST - The union between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    void symmetricDifference(Set set2);
+    Set symmetricDifference(Set set2);
     /*
      * PRE -
      * POST - The symmetric difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
-    
-    void initSet();
-    
     public boolean dupChecker(Identifier src);
+    /*
+     * PRE -
+     * POST - TRUE: The identifiers are not duplicates
+     *      - FALSE: The identifiers are duplicates
+     */
 
 }
 
