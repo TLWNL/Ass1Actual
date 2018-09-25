@@ -59,9 +59,8 @@ public class Set implements SetInterface {
     }
 
     // Does this need to be in Ident? So it can return an ident?
-	public StringBuffer get() {
-		StringBuffer sb2 = new StringBuffer(set[0].getIdent());
-		return sb2;
+	public Identifier get() {
+		return set[0];
 	}
 	
 	private StringBuffer getIndentValue(int i) {
