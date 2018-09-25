@@ -64,22 +64,23 @@ public class Set implements SetInterface {
 		return sb2;
 	}
 
-    public void printSet(){
-	    StringBuffer sb = new StringBuffer("{");
+	public void printSet(){
+        StringBuffer sb = new StringBuffer("{");
         int i = 0;
 
-	    while(this.set[i]!=null){
+        while(this.set[i]!=null){
             sb.append(this.get(i).toString());
             sb.append(" ");
             i++;
         }
 
-        // removes the last space
-        sb.deleteCharAt(sb.length()-1);
-	    sb.append("}");
-
-	    System.out.printf("%s\n", sb);
+        if(sb.length() > 1)
+            sb.deleteCharAt(sb.length()-1);
+        sb.append("}");
+        System.out.printf("%s\n", sb);
     }
+
+
 	
     public Set difference(Set set2){
         Set differenceSet = new Set();
