@@ -44,6 +44,7 @@ public class Assignment1 {
         //StringBuffer arrayInput = new StringBuffer();
         int checker = 0;
         int numOfElements = 0;
+        boolean exitCondition = true;
         if (nextChar(input) ==  '{'){
             Identifier ident = new Identifier();
             do {
@@ -69,7 +70,7 @@ public class Assignment1 {
 
                 // Read character into identifier
                 else if (nextCharIsLetter(input)) {
-                    checker = 0;
+                    checker = 2;
 
                     if(numOfElements == 0){
                         //while(!nextCharIs(input, ' ')){         // Skip the spaces
@@ -84,23 +85,30 @@ public class Assignment1 {
                 else if (nextCharIsDigit(input) && checker != 1) {
                     ident.add(nextChar(input));
                 }
+                else if(nextCharIs(input, '}')) {
+                	exitCondition = false;
+                }
                 else {
                     numOfElements++;
+                    System.out.println(nextChar(input));
                     System.out.println("Input invalid, error detected");
                     input.nextLine();
                     set.initSet();
                     return false;
                 }
-            } while(!nextCharIs(input, '}'));
+            } while(exitCondition);
             if(set.dupChecker(ident)) {
-                //ident.remove(0);                           //removes the garbage value
-                set.add(ident);                               // Skip the space
-                nextChar(input);
+            	System.out.println(ident.getIdent().toString());
+                if(checker != 0) {
+                	//ident.remove(0);                           //removes the garbage value
+                    set.add(ident);                               // Skip the space
+                    nextChar(input);
 
-                // ! What is checker for? !
-                checker = 1;
-                numOfElements++;
-                ident = new Identifier();
+                    // ! What is checker for? !
+                    checker = 1;
+                    numOfElements++;
+                    ident = new Identifier();
+                }
             }
             else {
                 set.initSet();
@@ -162,4 +170,3 @@ public class Assignment1 {
         set2.initSet();
     }
 }
-

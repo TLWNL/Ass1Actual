@@ -29,6 +29,8 @@ public class Identifier implements IdentInterface {
 		sb.append(c);
 	}
 
+
+
 	public void remove(int i){
 		sb.deleteCharAt(i);
 	}
