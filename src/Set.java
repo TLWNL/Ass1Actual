@@ -74,10 +74,9 @@ public class Set implements SetInterface {
             i++;
         }
 
-        // removes the last space
-        sb.deleteCharAt(sb.length()-1);
-	    sb.append("}");
-
+        if(sb.length() > 1)
+            sb.deleteCharAt(sb.length()-1);
+        sb.append("}");
 	    System.out.printf("%s\n", sb);
     }
 	
