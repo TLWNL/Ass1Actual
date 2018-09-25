@@ -20,7 +20,7 @@ public class Set implements SetInterface {
 
 	public boolean dupChecker(Identifier src) {
     	
-    	for(int i = 0; i<size; i++) {
+    	for(int i = 0; i<this.size; i++) {
     		if((src.getIdent().toString()).equals(this.get(i).toString())) {
     			return false;
     		}
@@ -46,9 +46,21 @@ public class Set implements SetInterface {
 	    return size;
     }
 
+    public boolean isEmpty(){
+	    if(this.size == 0)
+	        return true;
+        else
+	        return false;
+    }
+
+    public void remove(int i){
+	    Identifier emptyIdent = new Identifier();
+	    this.set[i] = emptyIdent;
+    }
+
+    // Does this need to be in Ident? So it can return an ident?
 	public StringBuffer get(int i) {
 		StringBuffer sb2 = new StringBuffer(set[i].getIdent());
-		
 		return sb2;
 	}
 
@@ -57,7 +69,6 @@ public class Set implements SetInterface {
         int i = 0;
 
 	    while(this.set[i]!=null){
-	        System.out.println(this.get(i));
             sb.append(this.get(i).toString());
             sb.append(" ");
             i++;
@@ -71,146 +82,103 @@ public class Set implements SetInterface {
     }
 	
     public Set difference(Set set2){
-
         Set differenceSet = new Set();
-        int difSetCounter = 0;
         boolean intersectFound;
 
         for(int i = 0; i<this.size;i++){
             intersectFound = false;
             for(int j = 0 ; j<set2.size(); j++){
-                // !!! RIGHT HERE IS WHERE THE 'BUG' HAPPENS, IT OUTPUTS MEMORY LOCATION INSTEAD OF STRING REP
                 if((this.get(i).toString()).equals((set2.get(j).toString()))){
-                	
                     intersectFound = true;
                 }
             }
             if(!intersectFound){
-                /*differenceSet.set[difSetCounter] = new Identifier(this.set[i]);
-                difSetCounter++;
-                differenceSet.set[difSetCounter] = new Identifier(set2.set[i]);
-                difSetCounter++;*/
             	Identifier A = new Identifier(get(i));
-            	differenceSet.set[difSetCounter] = A;
-            	difSetCounter++;
+            	differenceSet.add(A);
             }
         }
         
         for(int k = 0; k<set2.size;k++){
             intersectFound = false;
             for(int l = 0 ; l<this.size(); l++){
-                // !!! RIGHT HERE IS WHERE THE 'BUG' HAPPENS, IT OUTPUTS MEMORY LOCATION INSTEAD OF STRING REP
                 if((this.get(l).toString()).equals((set2.get(k).toString()))){
-                	
                     intersectFound = true;
                 }
             }
             if(!intersectFound){
-                /*differenceSet.set[difSetCounter] = new Identifier(this.set[i]);
-                difSetCounter++;
-                differenceSet.set[difSetCounter] = new Identifier(set2.set[i]);
-                difSetCounter++;*/
             	Identifier A = new Identifier(set2.get(k));
-            	differenceSet.set[difSetCounter] = A;
-            	difSetCounter++;
+            	differenceSet.add(A);
             }
         }
         return differenceSet;
     }
 
-    public StringBuffer[] intersection(Set set2){
-        StringBuffer intersectionString = new StringBuffer("{");
-        StringBuffer[] intersectArray = new StringBuffer[10];
-        int arrayCounter=0;
-            for(int i = 0; i<size;i++){
+    public Set intersection(Set set2){
+        Set intersectionSet = new Set();
+            for(int i = 0; i<this.size;i++){
                 for(int j = 0; j<set2.size();j++){
-                if((this.set[i].toString()).equals((set2.set[j].toString()))){
-                    //intersectionString.append(get(i));
-                    //intersectArray[arrayCounter] = get(i);
-                    arrayCounter++;
+                    if((this.get(i).toString()).equals((set2.get(j).toString()))){
+                        Identifier A = new Identifier(this.get(i));
+                        intersectionSet.add(A);
+                    }
                 }
             }
-        }
-
-        if(intersectionString.length() != 1)
-            intersectionString.delete(intersectionString.length() ,intersectionString.length());
-        intersectionString.append("}");
-
-        System.out.printf("intersection = %s\n", intersectionString);
-        return intersectArray;
+        return intersectionSet;
     }
 
-    public void union(Set set2){
-        StringBuffer unionString = new StringBuffer("{");
+    public Set union(Set set2){
+        Set unionSet = new Set();
         boolean intersectFound;
-        for(int i = 0; i<size;i++){
+        for(int i = 0; i<this.size;i++){
             intersectFound = false;
             for(int j = 0 ; j<set2.size(); j++){
-                //if((get(i).toString()).equals((set2.get(j).toString()))){
-                    //intersectFound = true;
-                //}
+                if((this.get(i).toString()).equals((set2.get(j).toString()))){
+                    intersectFound = true;
+                }
             }
             if(!intersectFound) {
-               // unionString.append(get(i));
-                unionString.append(" ");
+               Identifier identFound = new Identifier(this.get(i));
+               unionSet.add(identFound);
             }
         }
 
         for(int k=0;k<set2.size();k++){
-                //unionString.append(set2.get(k));
-                unionString.append(" ");
+                Identifier identFound2 = new Identifier(set2.get(k));
+                unionSet.add(identFound2);
         }
-
-        if(unionString.length() != 1)
-            unionString.delete(unionString.length()-1, unionString.length());
-        unionString.append("}");
-
-        System.out.printf("union = %s\n", unionString);
-
+        return unionSet;
     }
 
-    public void symmetricDifference(Set set2){
-    	        StringBuffer symmetricDifferenceString = new StringBuffer("{");
-        int intersectArrayLength = 0;
-        StringBuffer[] intersectArray = this.intersection(set2);
-        for(int i = 0; i<intersectArray.length;i++){
-            if(intersectArray[i] != null)
-                intersectArrayLength++;
-            //System.out.printf("Size of Intersection is: %d", intersectArrayLength);
+    public Set symmetricDifference(Set set2){
+	    Set intersectSet = this.intersection(set2);
+	    Set symdifSet = new Set();
 
-        }
-
-        for(int j = 0; j<size;j++){
+        for(int j = 0; j<this.size;j++){
             boolean intersectFound = false;
-            for(int k = 0; k<intersectArrayLength;k++){
-                //if(get(j).toString().equals(intersectArray[k].toString())){
-                //    intersectFound = true;
-                //}
-            }
-                        if(!intersectFound){
-               // symmetricDifferenceString.append(get(j));
-                symmetricDifferenceString.append(" ");
-            }
-        }
-        for(int l = 0; l<set2.size();l++){
-            boolean intersectFound = false;
-            for(int m = 0; m<intersectArrayLength;m++){
-               // if(set2.get(l).toString().equals(intersectArray[m].toString())){
-               //     intersectFound = true;
-               //}
+            for(int k = 0; k<intersectSet.size;k++){
+                if(this.get(j).toString().equals(intersectSet.get(k).toString())){
+                    intersectFound = true;
+                }
             }
             if(!intersectFound){
-                //symmetricDifferenceString.append(set2.get(l));
-                symmetricDifferenceString.append(" ");
+                Identifier foundIdent = new Identifier(this.get(j));
+                symdifSet.add(foundIdent);
             }
         }
 
-        if(symmetricDifferenceString.length() != 1)
-            symmetricDifferenceString.delete(symmetricDifferenceString.length() - 1,symmetricDifferenceString.length());
-        symmetricDifferenceString.append("}");
-
-        System.out.printf("sym. difference = %s\n" , symmetricDifferenceString);
-
+        for(int l = 0; l<set2.size();l++){
+            boolean intersectFound = false;
+            for(int m = 0; m<intersectSet.size;m++){
+               if(set2.get(l).toString().equals(intersectSet.get(m).toString())){
+                    intersectFound = true;
+               }
+            }
+            if(!intersectFound){
+                Identifier foundIdent2 = new Identifier(set2.get(l));
+                symdifSet.add(foundIdent2);
+            }
+        }
+        return symdifSet;
     }
 
 }
