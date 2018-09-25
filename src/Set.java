@@ -1,5 +1,4 @@
 public class Set implements SetInterface {
-
     private static final int MAX_NUM_OF_ELEMENTS = 10;
     private int size;
     private Identifier[] set;
@@ -16,7 +15,6 @@ public class Set implements SetInterface {
             i++;
         }
     }
-    
 
 	public boolean dupChecker(Identifier src) {
     	
@@ -58,7 +56,6 @@ public class Set implements SetInterface {
 	    this.set[i] = emptyIdent;
     }
 
-    // Does this need to be in Ident? So it can return an ident?
 	public Identifier get() {
 		return set[0];
 	}
@@ -83,8 +80,6 @@ public class Set implements SetInterface {
         sb.append("}");
         System.out.printf("%s\n", sb);
     }
-
-
 	
     public Set difference(Set set2){
         Set differenceSet = new Set();
@@ -185,5 +180,4 @@ public class Set implements SetInterface {
         }
         return symdifSet;
     }
-
 }

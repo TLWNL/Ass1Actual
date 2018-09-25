@@ -26,7 +26,6 @@ public class Assignment1 {
         return true;
     }
 
-
     void start () {
         Scanner in = new Scanner(System.in);
         in.useDelimiter("");
@@ -38,27 +37,28 @@ public class Assignment1 {
         }
     }
 
-
     boolean inputContainsCorrectSet (Scanner input, Set set) {
-
-        //StringBuffer arrayInput = new StringBuffer();
         int checker = 0;
-        int numOfElements = 0;
+        boolean identifierRead = false;
         boolean exitCondition = true;
+
         if (nextChar(input) ==  '{'){
             Identifier ident = new Identifier();
-            do {
 
+            if(nextCharIs(input, ' '))      // Skips space right after '{'
+                nextChar(input);
+
+            do {
                 // Add Identifier to set
                 if(nextCharIs(input, ' ')){
-                    if(set.dupChecker(ident)) {
-                        //ident.remove(0);                           //removes the garbage value
-                        set.add(ident);                               // Skip the space
+                   if(!identifierRead){
+                       nextChar(input);
+                   }
+                    else if(set.dupChecker(ident)) {
+                        set.add(ident);
                         nextChar(input);
-
-                        // ! What is checker for? !
                         checker = 1;
-                        numOfElements++;
+                        identifierRead = false;
                         ident = new Identifier();
                     }
                     else {
@@ -70,27 +70,18 @@ public class Assignment1 {
 
                 // Read character into identifier
                 else if (nextCharIsLetter(input)) {
+                    identifierRead = true;
                     checker = 2;
-
-                    if(numOfElements == 0){
-                        //while(!nextCharIs(input, ' ')){         // Skip the spaces
-                        ident.add(nextChar(input));
-                        //}
-                    }
-                    else{
-                        ident.add(nextChar(input));
-                    }
+                    ident.add(nextChar(input));
                 }
-                // ??
                 else if (nextCharIsDigit(input) && checker != 1) {
+                    identifierRead = true;
                     ident.add(nextChar(input));
                 }
                 else if(nextCharIs(input, '}')) {
                 	exitCondition = false;
                 }
                 else {
-                    numOfElements++;
-                    System.out.println(nextChar(input));
                     System.out.println("Input invalid, error detected");
                     input.nextLine();
                     set.initSet();
@@ -98,16 +89,11 @@ public class Assignment1 {
                 }
             } while(exitCondition);
             if(set.dupChecker(ident)) {
-            	System.out.println(ident.getIdent().toString());
                 if(checker != 0) {
-                	//ident.remove(0);                           //removes the garbage value
-                    set.add(ident);                               // Skip the space
-                    nextChar(input);
-
-                    // ! What is checker for? !
-                    checker = 1;
-                    numOfElements++;
-                    ident = new Identifier();
+                    if(identifierRead){
+                        set.add(ident);
+                        nextChar(input);
+                    }
                 }
             }
             else {
@@ -127,12 +113,8 @@ public class Assignment1 {
             set.initSet();
             return false;
         }
-
-
-        System.out.println("entered auth");
         input.nextLine();
         return true;
-
     }
 
     public char nextChar(Scanner in){

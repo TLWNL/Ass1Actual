@@ -1,5 +1,3 @@
-
-
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -28,8 +26,6 @@ public class Identifier implements IdentInterface {
     public void add(char c){
 		sb.append(c);
 	}
-
-
 
 	public void remove(int i){
 		sb.deleteCharAt(i);
