@@ -121,11 +121,9 @@ public class Assignment1 {
         return in.next().charAt(0);
     }
 
-
     public boolean nextCharIs(Scanner in, char c){
         return in.hasNext(Pattern.quote(c+""));
     }
-
 
     public boolean nextCharIsDigit(Scanner in){
         return in.hasNext("[0-9]");

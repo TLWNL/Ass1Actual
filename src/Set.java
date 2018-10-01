@@ -19,7 +19,7 @@ public class Set implements SetInterface {
 	public boolean dupChecker(Identifier src) {
     	
     	for(int i = 0; i<this.size; i++) {
-    		if((src.getIdent().toString()).equals(this.getIndentValue(i).toString())) {
+    		if((src.getIdent()).equals(this.getIndentValue(i).toString())) {
     			return false;
     		}
     		else {

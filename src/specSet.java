@@ -2,94 +2,95 @@ import java.util.Scanner;
 
 interface SetInterface {
     /*
-     * Elements: identifiers of the type StringBuffer
+     * Elements: identifiers of the type Identifier
      * Structure: linear
-     * Domain: 0 to 10 elements
+     * Domain: 0 to 20 elements
      *
      * Constructors
      *
      * InitSet();
-     * PRE -
-     * POST - A new Set-object has been created and contains the empty set
+     * @precondition -
+     * @@postcondition - A new Set-object has been created and contains the empty set
      *
      * Set(Set src);
-     * PRE -
-     * POST - A new Set-object has been created and contains a copy of src
+     * @precondition -
+     * @postcondition - A new Set-object has been created and contains a copy of src
      */
 
 
     void initSet();
     /*
-     * PRE -
-     * POST -
+     * @precondition -
+     * @postcondition - The set has been emptied
      */
 
     void add(Identifier a);
-    /*
-     * PRE -
-     * POST - Identifier a has been added to the set
+    /* CHANGE TO BOOLEAN
+     * @precondition -
+     * @postcondition - TRUE: Identifier a has been added to the set
+     *                  FALSE: Identifier a has not been added to the set
      */
 
     void printSet();
     /*
-     * PRE -
-     * POST - The Set has been printed out
+     * @precondition -
+     * @postcondition - The Set has been printed out
      *
      */
 
     int size();
     /*
-     * PRE -
-     * POST - The size of the set has been returned
+     * @precondition -
+     * @postcondition - The size of the set has been returned
      */
 
     void remove(int i);
-    /*
-     * PRE -
-     * POST - The element at index i of the set has been removed
+    /* CHANGE TO BOOLEAN
+     * @precondition -
+     * @postcondition - The element at index i of the set has been removed
      */
 
     boolean isEmpty();
     /*
-     * PRE -
-     * POST - TRUE: The set is empty
+     * @precondition -
+     * @postcondition - TRUE: The set is empty
      *        FALSE: The set is not empty
      */
 
     //StringBuffer get(int i);
     /*
-     * PRE -
-     * POST - Returns element i of the set in the form of a StringBuffer
+     * @precondition -
+     * @postcondition - Returns element i of the set in the form of a StringBuffer
      */
 
     Set difference(Set set2);
     /*
-     * PRE -
-     * POST - The difference between Set 1 and Set 2 has been calculated, formatted and printed
+     * @precondition -
+     * @postcondition - The difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
     Set intersection(Set set2);
     /*
-     * PRE -
-     * POST - The intersection between Set 1 and Set 2 has been calculated, formatted and printed
+     * @precondition -
+     * @postcondition - The intersection between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
     Set union(Set set);
     /*
-     * PRE -
-     * POST - The union between Set 1 and Set 2 has been calculated, formatted and printed
+     * @precondition -
+     * @postcondition - The union between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
     Set symmetricDifference(Set set2);
     /*
-     * PRE -
-     * POST - The symmetric difference between Set 1 and Set 2 has been calculated, formatted and printed
+     * @precondition -
+     * @postcondition - The symmetric difference between Set 1 and Set 2 has been calculated, formatted and printed
      */
 
     public boolean dupChecker(Identifier src);
-    /*
-     * PRE -
-     * POST - TRUE: The identifiers are not duplicates
+    /* CHANGE TO CONTAINS
+     * @precondition -
+     * @postcondition - TRUE: The identifiers are not duplicates
      *      - FALSE: The identifiers are duplicates
      */
 }
