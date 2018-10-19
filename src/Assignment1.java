@@ -90,7 +90,7 @@ public class Assignment1 {
                 }
                 else {
                     numOfElements++;
-                    System.out.println(nextChar(input));
+
                     System.out.println("Input invalid, error detected");
                     input.nextLine();
                     set.initSet();
@@ -98,7 +98,6 @@ public class Assignment1 {
                 }
             } while(exitCondition);
             if(set.dupChecker(ident)) {
-            	System.out.println(ident.getIdent().toString());
                 if(checker != 0) {
                 	//ident.remove(0);                           //removes the garbage value
                     set.add(ident);                               // Skip the space
@@ -129,7 +128,7 @@ public class Assignment1 {
         }
 
 
-        System.out.println("entered auth");
+
         input.nextLine();
         return true;
 
